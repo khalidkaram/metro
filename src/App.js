@@ -1,12 +1,44 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
-import './App.css';
 import Slider from './Slider';
 import BulbList from './BlubList';
 import PlayStopButton from './PlayStopButton';
 import { useInterval } from './hooks';
 import { computeBpmValue } from './helpers';
 import TimeSignature from './TimeSignature';
+
+const StyledBody = styled.body`
+  background-color: #282c34;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: auto;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  justify-content: center;
+`;
+
+const StyledMain = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 150px 0;
+`;
+
+const StyledBpm = styled.div`
+  color: #5f85db;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 92px;
+  line-height: 108px;
+`;
+
+const StyledBpmText = styled.span`
+  font-size: 28px;
+  color: #a8b1fb;
+`;
 
 function App() {
   const [bpm, setBpm] = useState(60);
@@ -39,19 +71,22 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <body className="App-body">
+    <StyledBody>
+      <StyledMain>
+        <StyledBpm>
+          {bpm} <StyledBpmText>BPM</StyledBpmText>
+        </StyledBpm>
         <BulbList nbrOfBeats={numberOfBeats} isPlaying={isPlaying} beat={currentBeat} />
         <Slider bpm={bpm} onBpmChange={handleBpmChange} />
-        <PlayStopButton isActive={isPlaying} onClick={togglePlay} />
         <TimeSignature
           numberOfBeats={numberOfBeats}
           beatValue={beatValue}
           onNumberOfBeatsChange={(e) => setNumberOfBeats(e.target.value)}
           onBeatValueChange={(e) => setBeatValue(e.target.value)}
         />
-      </body>
-    </div>
+        <PlayStopButton isActive={isPlaying} onClick={togglePlay} />
+      </StyledMain>
+    </StyledBody>
   );
 }
 
