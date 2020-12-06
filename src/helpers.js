@@ -1,4 +1,4 @@
-export const computeBpmValue = (bpm) => 60000 / bpm;
+export const computeBpmValue = bpm => 60000 / bpm;
 
 export const range = (start = 0, end, step = 1) => {
   const result = [];

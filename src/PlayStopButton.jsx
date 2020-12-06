@@ -14,7 +14,7 @@ const StyledBase = styled.button`
   border: none;
 `;
 
-const PlayStopButton = ({ isActive, onClick }) => (
+const PlayStopButton = ({isActive, onClick}) => (
   <StyledBase onClick={onClick}>{isActive ? 'Stop' : 'Play'}</StyledBase>
 );
 
