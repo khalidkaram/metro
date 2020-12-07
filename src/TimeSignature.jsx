@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { range } from './helpers';
+import {range} from './helpers';
 
 const StyledBase = styled.div`
   display: flex;
@@ -40,7 +40,7 @@ const StyledLabel = styled.label`
   margin-right: 20px;
 `;
 
-const TimeSignature = ({ numberOfBeats, beatValue, onNumberOfBeatsChange, onBeatValueChange }) => {
+const TimeSignature = ({numberOfBeats, beatValue, onNumberOfBeatsChange, onBeatValueChange}) => {
   const numbersOfBeats = React.useMemo(() => range(1, 16), []);
   const beatValues = React.useMemo(() => range(2, 12, 2), []);
 
@@ -49,16 +49,16 @@ const TimeSignature = ({ numberOfBeats, beatValue, onNumberOfBeatsChange, onBeat
       <StyledLabel>Time signature : </StyledLabel>
       <StyledSelectsContainer>
         <StyledSelect onChange={onNumberOfBeatsChange}>
-          {numbersOfBeats.map((beat) => (
-            <option key={beat} {...(numberOfBeats === beat ? { selected: true } : {})}>
+          {numbersOfBeats.map(beat => (
+            <option key={beat} {...(numberOfBeats === beat ? {selected: true} : {})}>
               {beat}
             </option>
           ))}
         </StyledSelect>
         <StyledDivider />
         <StyledSelect onChange={onBeatValueChange}>
-          {beatValues.map((value) => (
-            <option key={value} {...(beatValue === value ? { selected: true } : {})}>
+          {beatValues.map(value => (
+            <option key={value} {...(beatValue === value ? {selected: true} : {})}>
               {value}
             </option>
           ))}

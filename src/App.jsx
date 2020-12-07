@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 
 import Slider from './Slider';
 import BulbList from './BlubList';
 import PlayStopButton from './PlayStopButton';
-import { useInterval } from './hooks';
-import { computeBpmValue } from './helpers';
+import useInterval from './hooks';
+import {computeBpmValue} from './helpers';
 import TimeSignature from './TimeSignature';
 
 const StyledBody = styled.body`
@@ -59,10 +59,10 @@ function App() {
     () => {
       setCurrentBeat(currentBeat === numberOfBeats - 1 ? 0 : currentBeat + 1);
     },
-    isPlaying ? memorizedBpm : null,
+    isPlaying ? memorizedBpm : null
   );
 
-  const handleBpmChange = (event) => {
+  const handleBpmChange = event => {
     setBpm(event.target.value);
   };
 
@@ -81,8 +81,8 @@ function App() {
         <TimeSignature
           numberOfBeats={numberOfBeats}
           beatValue={beatValue}
-          onNumberOfBeatsChange={(e) => setNumberOfBeats(e.target.value)}
-          onBeatValueChange={(e) => setBeatValue(e.target.value)}
+          onNumberOfBeatsChange={e => setNumberOfBeats(e.target.value)}
+          onBeatValueChange={e => setBeatValue(e.target.value)}
         />
         <PlayStopButton isActive={isPlaying} onClick={togglePlay} />
       </StyledMain>

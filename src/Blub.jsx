@@ -1,17 +1,17 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
 
-import { boop } from './sounds';
+import boop from './sounds';
 
 const StyledBulb = styled.div`
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color: ${({ isActive }) => (isActive ? '#fffbb9' : '#a5a0a5')};
+  background-color: ${({isActive}) => (isActive ? '#fffbb9' : '#a5a0a5')};
   margin: 20px;
 `;
 
-const Bulb = ({ isActive }) => {
+const Bulb = ({isActive}) => {
   const beep = () => {
     boop.play();
   };
