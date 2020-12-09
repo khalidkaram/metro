@@ -19,6 +19,9 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
+      - name: Run eslint
+        run: yarn lint
+
     env:
       DEFAULT_BRANCH: master
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
