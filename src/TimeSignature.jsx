@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import {range} from './helpers';
-
 const StyledBase = styled.div`
   display: flex;
   align-items: center;
@@ -41,8 +39,8 @@ const StyledLabel = styled.label`
 `;
 
 const TimeSignature = ({numberOfBeats, beatValue, onNumberOfBeatsChange, onBeatValueChange}) => {
-  const numbersOfBeats = React.useMemo(() => range(1, 16), []);
-  const beatValues = React.useMemo(() => range(2, 12, 2), []);
+  const numbersOfBeats = React.useMemo(() => [...Array(16).keys()].map(n => n + 1), []);
+  const beatValues = React.useMemo(() => [...Array(6).keys()].map(n => 2 ** n), []);
 
   return (
     <StyledBase>
