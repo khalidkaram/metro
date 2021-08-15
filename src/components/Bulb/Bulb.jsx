@@ -8,7 +8,7 @@ const Bulb = ({isActive, beatNumber}) => {
     if (isActive) {
       play(beatNumber);
     }
-  }, [isActive]);
+  }, [isActive, beatNumber]);
 
   return <styles.Bulb isActive={isActive} />;
 };
