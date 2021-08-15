@@ -1,14 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 
-import Slider from './Slider';
-import BulbList from './BlubList';
-import PlayStopButton from './PlayStopButton';
+import Slider from './components/Slider';
+import BulbsList from './components/BulbsList';
+import PlayStopButton from './components/PlayStopButton';
+import TimeSignature from './components/TimeSignature';
+import BpmDisplay from './components/BpmDisplay';
 import useInterval from './hooks';
 import {computeBpmValue} from './helpers';
-import TimeSignature from './TimeSignature';
+import {NOTE_TYPES} from './utils/beat';
 
-const StyledBody = styled.body`
+const StyledBody = styled.div`
   background-color: #282c34;
   min-height: 100vh;
   display: grid;
@@ -27,27 +29,16 @@ const StyledMain = styled.section`
   padding: 150px 0;
 `;
 
-const StyledBpm = styled.div`
-  color: #5f85db;
-  font-family: Roboto;
-  font-weight: 500;
-  font-size: 92px;
-  line-height: 108px;
-`;
-
-const StyledBpmText = styled.span`
-  font-size: 28px;
-  color: #a8b1fb;
-`;
-
 function App() {
   const [bpm, setBpm] = useState(60);
   const [isPlaying, setIsPlaying] = useState(false);
   const [numberOfBeats, setNumberOfBeats] = useState(4);
-  const [beatValue, setBeatValue] = useState(4);
+  const [beatType, setBeatType] = useState(NOTE_TYPES.QUATER_NOTE);
   const [currentBeat, setCurrentBeat] = useState(0);
 
   const memorizedBpm = React.useMemo(() => computeBpmValue(bpm), [bpm]);
+
+  // console.log(numberOfBeats);
 
   useEffect(() => {
     if (!isPlaying) {
@@ -73,16 +64,14 @@ function App() {
   return (
     <StyledBody>
       <StyledMain>
-        <StyledBpm>
-          {bpm} <StyledBpmText>BPM</StyledBpmText>
-        </StyledBpm>
-        <BulbList nbrOfBeats={numberOfBeats} isPlaying={isPlaying} beat={currentBeat} />
+        <BpmDisplay bpm={bpm} />
+        <BulbsList numberOfBeats={numberOfBeats} isPlaying={isPlaying} currentBeat={currentBeat} />
         <Slider bpm={bpm} onBpmChange={handleBpmChange} />
         <TimeSignature
           numberOfBeats={numberOfBeats}
-          beatValue={beatValue}
-          onNumberOfBeatsChange={e => setNumberOfBeats(e.target.value)}
-          onBeatValueChange={e => setBeatValue(e.target.value)}
+          beatType={beatType}
+          onNumberOfBeatsChange={e => setNumberOfBeats(Number(e.target.value))}
+          onBeatValueChange={e => setBeatType(Number(e.target.value))}
         />
         <PlayStopButton isActive={isPlaying} onClick={togglePlay} />
       </StyledMain>
