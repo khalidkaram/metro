@@ -1,16 +1,12 @@
 import React, {useEffect} from 'react';
 
+import {play} from '../../services/AudioContext';
 import * as styles from './styles';
-import boop from '../../sounds';
 
-const Bulb = ({isActive}) => {
-  const beep = () => {
-    boop.play();
-  };
-
+const Bulb = ({isActive, beatNumber}) => {
   useEffect(() => {
     if (isActive) {
-      beep();
+      play(beatNumber);
     }
   }, [isActive]);
 
