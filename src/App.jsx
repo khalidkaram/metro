@@ -38,8 +38,6 @@ function App() {
 
   const memorizedBpm = React.useMemo(() => computeBpmValue(bpm), [bpm]);
 
-  // console.log(numberOfBeats);
-
   useEffect(() => {
     if (!isPlaying) {
       setCurrentBeat(0);
