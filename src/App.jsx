@@ -36,9 +36,7 @@ function App() {
   const [beatType, setBeatType] = useState(NOTE_TYPES.QUATER_NOTE);
   const [currentBeat, setCurrentBeat] = useState(0);
 
-  const memorizedBpm = React.useMemo(() => computeBpmValue(bpm), [bpm]);
-
-  // console.log(numberOfBeats);
+  const memoizedBpm = React.useMemo(() => computeBpmValue(bpm), [bpm]);
 
   useEffect(() => {
     if (!isPlaying) {
@@ -50,7 +48,7 @@ function App() {
     () => {
       setCurrentBeat(currentBeat === numberOfBeats - 1 ? 0 : currentBeat + 1);
     },
-    isPlaying ? memorizedBpm : null
+    isPlaying ? memoizedBpm : null
   );
 
   const handleBpmChange = event => {
