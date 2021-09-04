@@ -33,7 +33,7 @@ function App() {
   const [bpm, setBpm] = useState(60);
   const [isPlaying, setIsPlaying] = useState(false);
   const [numberOfBeats, setNumberOfBeats] = useState(4);
-  const [beatType, setBeatType] = useState(NOTE_TYPES.QUATER_NOTE);
+  const [beatType, setBeatType] = useState(NOTE_TYPES.QUARTER_NOTE);
   const [currentBeat, setCurrentBeat] = useState(0);
 
   const memoizedBpm = React.useMemo(() => computeBpmValue(bpm), [bpm]);
