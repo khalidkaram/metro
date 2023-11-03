@@ -6,7 +6,7 @@ import BulbsList from './components/BulbsList';
 import PlayStopButton from './components/PlayStopButton';
 import TimeSignature from './components/TimeSignature';
 import BpmDisplay from './components/BpmDisplay';
-import useInterval from './hooks';
+import {useInterval} from './hooks';
 import {computeBpmValue} from './helpers';
 import {NOTE_TYPES} from './utils/beat';
 

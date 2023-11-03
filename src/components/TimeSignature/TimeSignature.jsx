@@ -3,7 +3,8 @@ import React from 'react';
 import {NUMBER_OF_BEATS, NOTE_TYPES} from '../../utils/beat';
 import * as styles from './styles';
 
-const TimeSignature = ({numberOfBeats, beatType, onNumberOfBeatsChange, onBeatValueChange}) => (
+function TimeSignature({numberOfBeats, beatType, onNumberOfBeatsChange, onBeatValueChange}) {
+  return (
     <styles.TimeSignature>
       <styles.Label>Time signature : </styles.Label>
       <styles.SelectsContainer>
@@ -27,5 +28,6 @@ const TimeSignature = ({numberOfBeats, beatType, onNumberOfBeatsChange, onBeatVa
       </styles.SelectsContainer>
     </styles.TimeSignature>
   );
+}
 
 export default TimeSignature;
