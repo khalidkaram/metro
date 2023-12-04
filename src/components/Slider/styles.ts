@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const RangeInput = styled.input`
   -webkit-appearance: none;
@@ -20,4 +20,4 @@ export const RangeInput = styled.input`
     background: #a8b1fb;
     height: 5px;
   }
-`;
+`

@@ -2,21 +2,15 @@
   "name": "metro",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1",
-    "styled-components": "^6.1.0"
-  },
   "scripts": {
     "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format": "prettier \"src/**/*.{js,jsx,html}\" --write",
-    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet"
+    "typecheck": "tsc --project ./tsconfig.json",
+    "format": "prettier \"src/**/*.{js,jsx,ts,tsx,html}\" --write",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet"
   },
-  "prettier": "prettier-airbnb-config",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -29,24 +23,35 @@
       "last 1 safari version"
     ]
   },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1",
+    "styled-components": "^6.1.0"
+  },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.5.1",
-    "eslint-config-airbnb": "^19.0.4",
+    "@types/react": "^18.2.41",
+    "@types/react-dom": "^18.2.17",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "eslint": "^8.55.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-jest": "^27.6.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.5.3",
     "prettier": "^3.0.3",
-    "prettier-airbnb-config": "^1.0.0"
+    "typescript": "^5.3.2"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,html}": [
+    "src/**/*.{js,jsx,ts,tsx,html}": [
       "prettier --write",
       "eslint --fix"
     ]
